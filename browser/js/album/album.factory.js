@@ -22,6 +22,8 @@ juke.factory('AlbumFactory', function ($http, SongFactory) {
 
   AlbumFactory.convert = function (album) {
     album.imageUrl = '/api/albums/' + album.id + '/image';
+    album.songs = 'api/albums/' + album.id + '/songs';
+    console.log(album);
     return album;
   };
 

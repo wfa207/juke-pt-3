@@ -2,13 +2,13 @@
   <h3>Albums</h3>
   <div class="row">
     <div ng-repeat="album in albums" class="col-xs-4">
-      <a class="thumbnail" ng-click="viewAlbum(album.id)" href="#">
-        <img ng-src="">
+      <a class="thumbnail" href="#/albums/{{ album.id }}">
+        <img ng-src="{{ album.imageUrl }}">
         <div class="caption">
           <h5>
-            <span></span>
+            <span>{{ album.name }}</span>
           </h5>
-          <small>songs</small>
+          <small>{{ album.songs.length }} songs</small>
         </div>
       </a>
     </div>

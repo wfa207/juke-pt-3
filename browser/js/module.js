@@ -4,9 +4,14 @@ var juke = angular.module('juke', ['ui.router']);
 
 juke.config(function($stateProvider) {
 	$stateProvider.state('albumList', {
-    url: '/artist',
+    url: '/albums',
     templateUrl: '/albumsTemplate.html',
-    controller: 'AlbumsCtrl'
+    controller: 'AlbumsCtrl',
+    resolve: {
+      albums: function(AlbumFactory) {
+        return AlbumFactory.fetchAll();
+      }
+    }
   });
 });
 
@@ -14,7 +19,12 @@ juke.config(function($stateProvider) {
 	$stateProvider.state('artistList', {
     url: '/artists',
     templateUrl: '/artistsTemplate.html',
-    controller: 'ArtistsCtrl'
+    controller: 'ArtistsCtrl',
+    resolve: {
+      artists: function(ArtistFactory) {
+        return ArtistFactory.fetchAll();
+      }     
+    }
   });
 });
 
@@ -22,7 +32,12 @@ juke.config(function($stateProvider) {
 	$stateProvider.state('album', {
     url: '/albums/:albumId',
     templateUrl: '/albumTemplate.html',
-    controller: 'AlbumCtrl'
+    controller: 'AlbumCtrl',
+    resolve: {
+      album: function(AlbumFactory, $stateParams) {
+        return AlbumFactory.fetchById($stateParams.albumId);
+      }
+    }
   });
 });
 
@@ -30,7 +45,12 @@ juke.config(function($stateProvider) {
   $stateProvider.state('artist', {
     url: '/artists/:artistId',
     templateUrl: '/artistTemplate.html',
-    controller: 'ArtistCtrl'
+    controller: 'ArtistCtrl',
+    resolve: {
+      artist: function(ArtistFactory, $stateParams) {
+        return ArtistFactory.fetchById($stateParams.artistId);
+      }
+    }
   });
 });
 
