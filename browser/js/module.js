@@ -5,7 +5,7 @@ var juke = angular.module('juke', ['ui.router']);
 juke.config(function($stateProvider) {
 	$stateProvider.state('albumList', {
     url: '/albums',
-    templateUrl: '/albumTemplate.html',
+    templateUrl: '/albumsTemplate.html',
     controller: 'AlbumsCtrl'
   });
 });
@@ -13,7 +13,15 @@ juke.config(function($stateProvider) {
 juke.config(function($stateProvider) {
 	$stateProvider.state('artistList', {
     url: '/artists',
-    templateUrl: '/artistTemplate.html',
+    templateUrl: '/artistsTemplate.html',
     controller: 'ArtistsCtrl'
+  });
+});
+
+juke.config(function($stateProvider) {
+	$stateProvider.state('album', {
+    url: '/albums/:albumid',
+    templateUrl: '/albumTemplate.html',
+    controller: 'albumCtrl'
   });
 });
