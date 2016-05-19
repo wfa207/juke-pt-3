@@ -29,7 +29,7 @@ juke.config(function($stateProvider) {
 });
 
 juke.config(function($stateProvider) {
-	$stateProvider.state('album', {
+	$stateProvider.state('albums', {
     url: '/albums/:albumId',
     templateUrl: '/albumTemplate.html',
     controller: 'AlbumCtrl',
